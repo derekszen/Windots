@@ -22,13 +22,15 @@ config.font_size = 10
 -- Window
 config.initial_rows = 45
 config.initial_cols = 180
-config.window_decorations = "RESIZE"
+config.window_decorations = "TITLE"  -- Use TITLE for title bar but no resizing
+config.integrated_title_buttons = { "Hide", "Maximize", "Close" } -- This line may not be necessary with TITLE
 config.window_background_opacity = opacity
 config.window_close_confirmation = "NeverPrompt"
 config.win32_system_backdrop = "Acrylic"
-config.max_fps = 144
+config.max_fps = 120
 config.animation_fps = 60
 config.cursor_blink_rate = 250
+
 if os == "linux" then
     config.front_end = "WebGpu"
 end
@@ -82,6 +84,14 @@ end)
 config.keys = {
     -- Remap paste for clipboard history compatibility
     { key = "v", mods = "CTRL", action = wezterm.action({ PasteFrom = "Clipboard" }) },
+
+    -- Switch tabs with Alt+Q and Alt+E
+    { key = "q", mods = "ALT", action = wezterm.action({ ActivateTabRelative = -1 }) },
+    { key = "e", mods = "ALT", action = wezterm.action({ ActivateTabRelative = 1 }) },
+
+    -- Create new tab with Alt+C and Ctrl+T
+    { key = "c", mods = "ALT", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
+    { key = "t", mods = "CTRL", action = wezterm.action({ SpawnTab = "CurrentPaneDomain" }) },
 }
 
 return config
