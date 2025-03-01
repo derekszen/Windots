@@ -43,21 +43,13 @@ config.window_background_opacity = opacity
 config.window_background_image = (os.getenv("WEZTERM_CONFIG_FILE") or ""):gsub("wezterm.lua", "bg-blurred.png")
 config.window_close_confirmation = "NeverPrompt"
 config.win32_system_backdrop = "Acrylic"
-<<<<<<< HEAD
 config.max_fps = 120
-config.animation_fps = 60
+config.animation_fps = 120
 config.cursor_blink_rate = 250
 
 if os == "linux" then
     config.front_end = "WebGpu"
 end
-=======
-
--- Performance Settings
-config.max_fps = 144
-config.animation_fps = 60
-config.cursor_blink_rate = 250
->>>>>>> c483411811366a1a9922a2d1403409bc5fc7ddf9
 
 -- Tab Bar Configuration
 config.enable_tab_bar = true
